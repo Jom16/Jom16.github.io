@@ -1,0 +1,253 @@
+/* ==========================================================================
+   tokens.css — design tokens (custom properties only, no components)
+
+   Theme contract
+   - Dark is the default.
+   - Light applies when:
+       (a) <html data-theme="light">, or
+       (b) <html> has no data-theme="dark" and the system prefers light.
+   - <html data-theme="dark"> forces dark even if the system prefers light.
+   - Section hue goes on <html class="hue-blue | hue-green | hue-lav">,
+     next to data-theme, so html and body share the same --base.
+     No class means blue (blue values live on :root).
+
+   Note: the light blocks are intentionally duplicated (media query +
+   data-theme attribute) because plain CSS cannot share one rule block
+   between a media query and a selector. Keep both copies in sync.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Dark (default) + blue hue
+   -------------------------------------------------------------------------- */
+:root {
+  /* Fonts */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: Charter, 'Sitka Text', Cambria, Georgia, serif;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Brand */
+  --wolf-color: #AF8F85;
+
+  /* Dark base */
+  --base: #0D1117;
+  --text: #E6EDF5;
+  --muted: #9FB0C3;
+  --bar: rgba(13, 17, 23, 0.65);
+  --barText: #E6EDF5;
+  --border: rgba(255, 255, 255, 0.10);
+  --panel: rgba(22, 27, 34, 0.16);
+  --panelBorder: rgba(255, 255, 255, 0.12);
+  --shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.22),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.06),
+    0 20px 60px rgba(0, 0, 0, 0.45);
+  --menu: #161B22;
+  --hl: rgba(255, 255, 255, 0.22);
+  --glow-alpha: 0.22;
+  --wolf-outline: none;
+
+  /* Blue hue, dark (default hue) */
+  --link: #8CC4FF;
+  --chipBg: rgba(140, 196, 255, 0.14);
+  --chipText: #BFE0FF;
+  --chipBorder: rgba(140, 196, 255, 0.28);
+  --segOn: rgba(140, 196, 255, 0.22);
+  --glow-rgb: 140, 196, 255;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Hue overrides, dark
+   (No html.hue-blue rule on purpose: blue already comes from :root.)
+   -------------------------------------------------------------------------- */
+html.hue-green {
+  --link: #8FE0B8;
+  --chipBg: rgba(143, 224, 184, 0.14);
+  --chipText: #C4F2DC;
+  --chipBorder: rgba(143, 224, 184, 0.28);
+  --segOn: rgba(143, 224, 184, 0.22);
+  --glow-rgb: 143, 224, 184;
+}
+
+html.hue-lav {
+  --link: #C3B4FF;
+  --chipBg: rgba(195, 180, 255, 0.14);
+  --chipText: #E0D8FF;
+  --chipBorder: rgba(195, 180, 255, 0.28);
+  --segOn: rgba(195, 180, 255, 0.22);
+  --glow-rgb: 195, 180, 255;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Reading panel (.read), dark — opaque, no glass
+   -------------------------------------------------------------------------- */
+.read {
+  --read-bg: #1C1B19;
+  --bar-read: #1C1B19;          /* opaque background for .glass inside .read */
+  --read-shadow: none;
+  --text: #E8E2D6;
+  --muted: #A8A092;
+  --link: #8CB8E8;
+  --border: rgba(232, 226, 214, 0.14);
+  --chipBg: #2C2A26;
+  --chipText: #E3D9C4;
+  --chipBorder: rgba(232, 226, 214, 0.22);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Footer — always black, ignores the theme
+   -------------------------------------------------------------------------- */
+.site-footer {
+  --text: #E6EDF5;
+  --muted: #9FB0C3;
+  --link: #8CC4FF;
+  --border: rgba(255, 255, 255, 0.10);
+  --chipBorder: rgba(140, 196, 255, 0.28);
+  --chipBg: rgba(140, 196, 255, 0.14);
+  --menu: #161B22;
+  --hl: rgba(255, 255, 255, 0.22);
+  --wolf-outline: none;
+}
+
+
+/* ==========================================================================
+   LIGHT THEME — copy A: system preference (no data-theme="dark")
+   Keep in sync with copy B below.
+   ========================================================================== */
+@media (prefers-color-scheme: light) {
+
+  /* Light base + blue hue */
+  :root:not([data-theme="dark"]) {
+    --base: #EEF5FC;
+    --text: #10202F;
+    --muted: #4A5B6C;
+    --bar: rgba(255, 255, 255, 0.55);
+    --barText: #0B2540;
+    --border: rgba(20, 50, 90, 0.14);
+    --panel: rgba(255, 255, 255, 0.18);
+    --panelBorder: rgba(255, 255, 255, 0.8);
+    --shadow:
+      inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+      inset -1px -1px 0 rgba(255, 255, 255, 0.4),
+      0 20px 50px rgba(30, 70, 120, 0.18);
+    --menu: #FFFFFF;
+    --hl: rgba(255, 255, 255, 0.95);
+    --segOn: rgba(255, 255, 255, 0.9);
+    --glow-alpha: 0.38;
+    --wolf-outline: drop-shadow(0 0 0.5px #2B1F1B) drop-shadow(0 0 0.5px #2B1F1B);
+
+    --link: #1B5FAA;
+    --chipBg: #D3E6F7;
+    --chipText: #1B4F8A;
+    --chipBorder: rgba(27, 79, 138, 0.25);
+    --glow-rgb: 90, 169, 240;
+  }
+
+  /* Green hue, light (--segOn reset over the dark hue value) */
+  html.hue-green:not([data-theme="dark"]) {
+    --base: #EEF8F3;
+    --link: #1A6F4D;
+    --chipBg: #D6F0E3;
+    --chipText: #17604A;
+    --chipBorder: rgba(23, 96, 74, 0.25);
+    --segOn: rgba(255, 255, 255, 0.9);
+    --glow-rgb: 90, 200, 150;
+  }
+
+  /* Lavender hue, light */
+  html.hue-lav:not([data-theme="dark"]) {
+    --base: #F3F0FB;
+    --link: #5B48B5;
+    --chipBg: #E4DEF8;
+    --chipText: #463A8F;
+    --chipBorder: rgba(70, 58, 143, 0.25);
+    --segOn: rgba(255, 255, 255, 0.9);
+    --glow-rgb: 150, 130, 230;
+  }
+
+  /* Reading panel, light */
+  :root:not([data-theme="dark"]) .read {
+    --read-bg: #FAF6EC;
+    --bar-read: #FAF6EC;
+    --read-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+    --text: #2A2620;
+    --muted: #6B6254;
+    --link: #1F5F9E;
+    --border: rgba(60, 45, 20, 0.16);
+    --chipBg: #EFE7D6;
+    --chipText: #4A3F2A;
+    --chipBorder: rgba(90, 70, 40, 0.25);
+  }
+}
+
+
+/* ==========================================================================
+   LIGHT THEME — copy B: forced with <html data-theme="light">
+   Keep in sync with copy A above.
+   ========================================================================== */
+
+/* Light base + blue hue */
+:root[data-theme="light"] {
+  --base: #EEF5FC;
+  --text: #10202F;
+  --muted: #4A5B6C;
+  --bar: rgba(255, 255, 255, 0.55);
+  --barText: #0B2540;
+  --border: rgba(20, 50, 90, 0.14);
+  --panel: rgba(255, 255, 255, 0.18);
+  --panelBorder: rgba(255, 255, 255, 0.8);
+  --shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.95),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.4),
+    0 20px 50px rgba(30, 70, 120, 0.18);
+  --menu: #FFFFFF;
+  --hl: rgba(255, 255, 255, 0.95);
+  --segOn: rgba(255, 255, 255, 0.9);
+  --glow-alpha: 0.38;
+  --wolf-outline: drop-shadow(0 0 0.5px #2B1F1B) drop-shadow(0 0 0.5px #2B1F1B);
+
+  --link: #1B5FAA;
+  --chipBg: #D3E6F7;
+  --chipText: #1B4F8A;
+  --chipBorder: rgba(27, 79, 138, 0.25);
+  --glow-rgb: 90, 169, 240;
+}
+
+/* Green hue, light */
+html.hue-green[data-theme="light"] {
+  --base: #EEF8F3;
+  --link: #1A6F4D;
+  --chipBg: #D6F0E3;
+  --chipText: #17604A;
+  --chipBorder: rgba(23, 96, 74, 0.25);
+  --segOn: rgba(255, 255, 255, 0.9);
+  --glow-rgb: 90, 200, 150;
+}
+
+/* Lavender hue, light */
+html.hue-lav[data-theme="light"] {
+  --base: #F3F0FB;
+  --link: #5B48B5;
+  --chipBg: #E4DEF8;
+  --chipText: #463A8F;
+  --chipBorder: rgba(70, 58, 143, 0.25);
+  --segOn: rgba(255, 255, 255, 0.9);
+  --glow-rgb: 150, 130, 230;
+}
+
+/* Reading panel, light */
+:root[data-theme="light"] .read {
+  --read-bg: #FAF6EC;
+  --bar-read: #FAF6EC;
+  --read-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  --text: #2A2620;
+  --muted: #6B6254;
+  --link: #1F5F9E;
+  --border: rgba(60, 45, 20, 0.16);
+  --chipBg: #EFE7D6;
+  --chipText: #4A3F2A;
+  --chipBorder: rgba(90, 70, 40, 0.25);
+}
