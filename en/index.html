@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="hue-green">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Luis Orozco's Weblog</title>
+  <meta name="description" content="Professional growth log by Luis Orozco.">
+  <link rel="stylesheet" href="../assets/css/tokens.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <!-- Applies a saved theme before first paint: keep it blocking (no defer). -->
+  <script src="../assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="page" id="top">
+    <span class="wolf-mark watermark" aria-hidden="true"><span class="wolf"></span></span>
+
+    <header class="site-header">
+      <a class="cap fx brand" href="index.html">
+        <span class="wolf-mark" aria-hidden="true"><span class="wolf"></span></span>
+        <span>Luis Orozco's Weblog</span>
+      </a>
+      <nav class="cap site-nav" aria-label="Main">
+        <a class="fx nav" href="entries.html">Entries</a>
+        <a class="fx nav" href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main class="glass home">
+      <h1 class="visually-hidden">Luis Orozco's Weblog</h1>
+      <p class="intro"><span class="prompt" aria-hidden="true">&gt; </span>Professional growth log. [One line about you.]</p>
+
+      <!-- SAMPLE-CONTENT:START -->
+      <a class="row featured" href="#">
+        <div class="card-meta">
+          <span class="pill">Featured</span>
+          <time datetime="2026-11-13">13 Nov 2026</time>
+          <span>Git</span>
+        </div>
+        <h2 class="featured-title">Protecting main with a GitHub ruleset</h2>
+        <p class="featured-sub">Why a solo project still needs a protected production branch.</p>
+      </a>
+
+      <h2 class="section-label">Also featured</h2>
+      <div class="card-grid">
+        <a class="row card" href="#">
+          <div class="card-meta"><time datetime="2026-11-12">12 Nov 2026</time> / <span>Workflow</span></div>
+          <h3 class="card-title">Why my site lives on two branches</h3>
+          <p class="card-sub">QA for work in progress, main for production.</p>
+        </a>
+        <a class="row card" href="#">
+          <div class="card-meta"><time datetime="2026-11-10">10 Nov 2026</time> / <span>HTML/CSS</span></div>
+          <h3 class="card-title">Building a bilingual site without a framework</h3>
+          <p class="card-sub">Plain files, a language toggle and no build step.</p>
+        </a>
+      </div>
+      <!-- SAMPLE-CONTENT:END -->
+
+      <p class="view-all"><a href="entries.html">View all entries →</a></p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <span class="wolf-mark" aria-hidden="true"><span class="wolf"></span></span>
+          <span class="footer-name">Luis Orozco's Weblog</span>
+
+          <div class="footer-controls">
+            <details class="lang-menu">
+              <summary class="lang lang-pill">
+                <svg class="icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M3 12h18"/>
+                  <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/>
+                </svg>
+                <span><span class="visually-hidden">Language: </span>English</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path d="M6 15l6-6 6 6"/>
+                </svg>
+              </summary>
+              <ul class="lang-list">
+                <li><a href="../en/index.html" hreflang="en" lang="en" aria-current="true">English</a></li>
+                <li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li>
+              </ul>
+            </details>
+
+            <button class="lang theme-toggle" type="button" data-theme-toggle hidden aria-label="Switch to light mode" title="Switch to light mode" data-label-to-light="Switch to light mode" data-label-to-dark="Switch to dark mode">
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="footer-cols">
+          <nav aria-labelledby="footer-site-title">
+            <h2 class="footer-title" id="footer-site-title">Site</h2>
+            <ul class="footer-links">
+              <li><a href="entries.html">Entries</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <p class="back-top"><a href="#top">Back to top ↑</a></p>
+
+        <div class="footer-legal">
+          <p class="copyright">© 2026 Luis Orozco</p>
+          <ul class="social">
+            <li>
+              <a href="https://github.com/Jom16" aria-label="GitHub" title="GitHub">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/luisorozcom" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="4"/>
+                  <path d="M8 11v6M12 17v-6M12 13.5a2.5 2.5 0 0 1 5 0V17"/>
+                  <circle cx="8" cy="7.75" r="0.6" fill="currentColor"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <!-- TODO-EMAIL: replace with a non-personal contact address -->
+              <a href="mailto:your-address@example.com" aria-label="Email me" title="Email me">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/>
+                  <path d="M3 7l9 6 9-6"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

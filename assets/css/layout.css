@@ -1,0 +1,479 @@
+/* ==========================================================================
+   layout.css — page layout: header bar, main panel, cards and footer
+   Load order: tokens.css, base.css, layout.css.
+   Colors come only from tokens, except the fixed footer values noted below.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Helpers
+   -------------------------------------------------------------------------- */
+
+/* Native controls (scrollbars, form fields) follow a forced theme. */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Hidden on screen, still read by screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wolf-mark {
+  display: inline-flex;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Page container
+   overflow: clip (not hidden) keeps position: sticky working on the header;
+   "hidden" is only a fallback for browsers without "clip".
+   -------------------------------------------------------------------------- */
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  overflow: clip;
+}
+
+/* Wolf watermark behind the content */
+.watermark {
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  z-index: 0;
+  transform: translateX(-50%);
+  color: var(--wolf-color);
+  opacity: 0.09;
+  pointer-events: none;
+  filter: none;              /* no outline on the watermark */
+}
+
+.watermark .wolf {
+  width: 520px;
+  height: 520px;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Header bar
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 12px;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 16px 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--barText);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 22px 8px 14px;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand .wolf {
+  width: 32px;
+  height: 32px;
+}
+
+.site-nav {
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+}
+
+.nav {
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Main panel
+   -------------------------------------------------------------------------- */
+.home {
+  z-index: 1;
+  width: 100%;
+  max-width: 52rem;
+  margin: 32px auto 64px;
+  padding: 36px 32px 44px;
+  font-family: var(--font-sans);
+}
+
+.intro {
+  margin: 0 0 24px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.prompt {
+  color: var(--link);
+}
+
+/* Shared card reset (cards are links) */
+.featured,
+.card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Featured card */
+.featured {
+  width: 100%;
+  margin-bottom: 28px;
+  padding: 32px;
+  background: linear-gradient(135deg, var(--chipBg), transparent 70%);
+  border: 1px solid var(--chipBorder);
+  border-radius: 20px;
+  box-shadow: inset 1px 1px 0 var(--hl);
+}
+
+.pill {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--link);
+  color: var(--menu);
+  font-weight: 700;
+}
+
+.featured-title {
+  margin: 16px 0 12px;
+  font-size: 38px;
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--link);
+}
+
+.featured-sub {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Section label */
+.section-label {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.card-title {
+  margin: 8px 0 6px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--link);
+}
+
+.card-sub {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.view-all {
+  margin: 28px 0 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.view-all a {
+  color: var(--link);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Footer (always black; tokens redefined in tokens.css)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  position: relative;        /* paints above the watermark */
+  z-index: 1;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 32px 28px 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-top .wolf {
+  width: 34px;
+  height: 34px;
+}
+
+.footer-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.footer-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+/* Language selector (no JavaScript: <details>) */
+.lang-menu {
+  position: relative;
+}
+
+.lang-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  background: var(--menu);
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+}
+
+.lang-pill::-webkit-details-marker {
+  display: none;
+}
+
+.lang-pill .icon-globe {
+  width: 20px;
+  height: 20px;
+}
+
+.lang-pill .chevron {
+  width: 16px;
+  height: 16px;
+}
+
+.lang-menu[open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* The list opens upward */
+.lang-list {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  min-width: 10rem;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--menu);
+  border: 1px solid var(--chipBorder);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);       /* fixed footer value */
+}
+
+.lang-list a {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.lang-list a:hover {
+  background-color: var(--chipBg);
+}
+
+.lang-list a[aria-current="true"] {
+  font-weight: 700;
+  background-color: rgba(140, 196, 255, 0.22);       /* fixed footer value */
+}
+
+/* Theme button (hidden until theme.js shows it) */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  background: var(--menu);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.theme-toggle[hidden] {
+  display: none;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Sun when the effective theme is dark, moon when it is light */
+.theme-toggle .icon-moon,
+.theme-toggle[data-mode="light"] .icon-sun {
+  display: none;
+}
+
+.theme-toggle[data-mode="light"] .icon-moon {
+  display: block;
+}
+
+/* Site links column */
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.footer-title {
+  margin: 0 0 12px;
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.footer-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links li + li {
+  margin-top: 8px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back-top {
+  margin: 28px 0 0;
+  text-align: center;
+}
+
+/* Legal row */
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.copyright {
+  margin: 0;
+  color: var(--muted);
+}
+
+.social {
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social a {
+  display: block;
+  color: var(--muted);
+}
+
+.social svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Small screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 40rem) {
+  .home {
+    width: auto;
+    margin: 24px 16px 48px;
+    padding: 28px 20px 32px;
+  }
+
+  .featured {
+    padding: 22px;
+  }
+
+  .featured-title {
+    font-size: 30px;
+  }
+
+  .footer-inner {
+    padding: 28px 16px 20px;
+  }
+}
